@@ -9,8 +9,10 @@ GIT_USER_NAME="Vojin Puric"
 GIT_USER_EMAIL="puricvojin@gmail.com"
 
 ### General ###
+echo "sudo needed for some of configuration"
+sudo echo "Super User granted"
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 #install apt packages
 sudo apt install -y openjdk-11-jdk htop
 
@@ -29,7 +31,6 @@ echo "### Setting up JDK ###"
 JAVA_HOME_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
 sudo printf "\nexport JAVA_HOME=\"%s\"\n" $JAVA_HOME_PATH | tee -a /etc/profile
 sudo printf "export PATH=\$JAVA_HOME/bin:\$PATH\n" | tee -a /etc/profile
-sudo source /etc/profile
 
 # TODO ### Setup fish ###
 
@@ -56,7 +57,7 @@ then
     for file in ./portable/*.tar.gz
     do
         echo "### Extracting $file to HOME"
-        ar xvzf $file -C ~ || echo "extracting $file failed" > /dev/stderr
+        tar xvzf $file -C ~ || echo "extracting $file failed" > /dev/stderr
     done
     
 fi
@@ -77,3 +78,8 @@ rm ./shell-color-scripts/colorscripts/colortest-slim
 sudo mv shell-color-scripts/ /opt/
 #add to run on every terminal launch
 sudo echo -e "\ncolorscript -r\n" >> ~/.bashrc
+
+
+### Fix if some installs were broken ###
+sudo apt --fix-broken install -y
+sudo apt autoremove -y
