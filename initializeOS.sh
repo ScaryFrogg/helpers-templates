@@ -75,4 +75,4 @@ rm ./shell-color-scripts/colorscripts/guns
 rm ./shell-color-scripts/colorscripts/colortest-slim
 sudo mv shell-color-scripts/ /opt/
 #add to run on every terminal launch
-sudo echo -e "\ncolorscript -r\n" >> ~/.bashrc
+sudo echo -e "\ncolorscript -ry\n" >> ~/.bashrc
