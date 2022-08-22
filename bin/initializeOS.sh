@@ -1,10 +1,16 @@
 #!/bin/bash
+### Notes
+#Put all .deb installers inisde ./installers folder 
+# and all zipped(.tar and .tar.gz) portable software inside ./portable folder
+#Update Variables if neede
+GIT_USER_NAME="Vojin Puric"
+GIT_USER_EMAIL="puricvojin@gmail.com"
 
 ### General ###
 sudo apt update
 sudo apt upgrade
 # gdebi for installing packages
-sudo apt install -yy gdebi
+sudo apt install -yy htop neofetch
 
 ### move scripts to bin ###
 echo "Moving scripts to /usr/local/bin"
@@ -12,8 +18,8 @@ sudo cp -a ./bin/. /usr/local/bin/
 
 ### Setup Git ###
 echo "### Setting up git ###"
-git config --global user.name "Vojin Puric"
-git config --global user.email puricvojin@gmail.com
+git config --global user.name $GIT_USER_NAME
+git config --global user.email $GIT_USER_EMAIL
 git config --list --global
 
 ### Setup JDK ###
@@ -38,6 +44,7 @@ then
 fi
 
 ### Extracting portable software ###
+echo "### Extracting Portable Software to HOME ###"
 if [ -d "./portable" ]; 
 then
     for file in ./portable/*.tar
@@ -54,3 +61,18 @@ then
 fi
 
 # TODO ### Setup VS Code ###
+
+### Terminal color-schemes ###
+echo "### Setting up Terminal color-schemes ###"
+cd ~
+git clone https://gitlab.com/dwt1/shell-color-scripts.git
+sudo cp ./shell-color-scripts/colorscript.sh /usr/bin/colorscript
+#remove unwanted and move rest to /opt/
+rm ./shell-color-scripts/colorscripts/xmonad
+rm ./shell-color-scripts/colorscripts/spectrum
+rm ./shell-color-scripts/colorscripts/doom-original
+rm ./shell-color-scripts/colorscripts/guns
+rm ./shell-color-scripts/colorscripts/colortest-slim
+sudo mv shell-color-scripts/ /opt/
+#add to run on every terminal launch
+sudo echo -e "\ncolorscript -ry\n" >> ~/.bashrc
