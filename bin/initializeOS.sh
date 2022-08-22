@@ -10,7 +10,7 @@ GIT_USER_EMAIL="puricvojin@gmail.com"
 sudo apt update
 sudo apt upgrade
 #install apt packages
-sudo apt install -yy htop
+sudo apt install -y openjdk-11-jdk htop
 
 ### move scripts to bin ###
 echo "Moving scripts to /usr/local/bin"
@@ -24,8 +24,7 @@ git config --list --global
 
 ### Setup JDK ###
 echo "### Setting up JDK ###"
-sudo apt install --yy openjdk-11-jdk
-JAVA_HOME_PATH=$(dirname $(dirname $(readlink -f $(which javac)))) || echo "Couldn't find Java"
+JAVA_HOME_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
 sudo printf "\nexport JAVA_HOME=\"%s\"\n" $JAVA_HOME_PATH | tee -a /etc/profile
 sudo printf "export PATH=\$JAVA_HOME/bin:\$PATH\n" | tee -a /etc/profile
 sudo source /etc/profile
