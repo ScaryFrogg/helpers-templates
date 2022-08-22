@@ -2,7 +2,9 @@
 ### Notes
 #Put all .deb installers inisde ./installers folder 
 # and all zipped(.tar and .tar.gz) portable software inside ./portable folder
-#Update Variables if neede
+#Update Variables if needed
+
+### Variables ###
 GIT_USER_NAME="Vojin Puric"
 GIT_USER_EMAIL="puricvojin@gmail.com"
 
