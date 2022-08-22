@@ -2,7 +2,9 @@
 ### Notes
 #Put all .deb installers inisde ./installers folder 
 # and all zipped(.tar and .tar.gz) portable software inside ./portable folder
-#Update Variables if neede
+#Update Variables if needed
+
+### Variables ###
 GIT_USER_NAME="Vojin Puric"
 GIT_USER_EMAIL="puricvojin@gmail.com"
 
@@ -10,7 +12,7 @@ GIT_USER_EMAIL="puricvojin@gmail.com"
 sudo apt update
 sudo apt upgrade
 #install apt packages
-sudo apt install -yy htop
+sudo apt install -y openjdk-11-jdk htop
 
 ### move scripts to bin ###
 echo "Moving scripts to /usr/local/bin"
@@ -24,8 +26,7 @@ git config --list --global
 
 ### Setup JDK ###
 echo "### Setting up JDK ###"
-sudo apt install --yy openjdk-11-jdk
-JAVA_HOME_PATH=$(dirname $(dirname $(readlink -f $(which javac)))) || echo "Couldn't find Java"
+JAVA_HOME_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
 sudo printf "\nexport JAVA_HOME=\"%s\"\n" $JAVA_HOME_PATH | tee -a /etc/profile
 sudo printf "export PATH=\$JAVA_HOME/bin:\$PATH\n" | tee -a /etc/profile
 sudo source /etc/profile
@@ -75,4 +76,4 @@ rm ./shell-color-scripts/colorscripts/guns
 rm ./shell-color-scripts/colorscripts/colortest-slim
 sudo mv shell-color-scripts/ /opt/
 #add to run on every terminal launch
-sudo echo -e "\ncolorscript -ry\n" >> ~/.bashrc
+sudo echo -e "\ncolorscript -r\n" >> ~/.bashrc
