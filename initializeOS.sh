@@ -14,7 +14,7 @@ sudo echo "Super User granted"
 sudo apt update
 sudo apt upgrade -y
 #install apt packages
-sudo apt install -y openjdk-11-jdk htop
+sudo apt install -y openjdk-11-jdk htop node
 
 ### move scripts to bin ###
 echo "Moving scripts to /usr/local/bin"
@@ -61,6 +61,16 @@ then
     done
     
 fi
+
+### Configure Kotlin ###
+echo "### Configuring Kotlin ###"
+
+sudo printf "\nexport KOTLIN_HOME=\"/home/vojin/idea-IU-221.5787.30/plugins/Kotlin\"\n" | tee -a /etc/profile
+sudo printf "export PATH=\$PATH:\$KOTLIN_HOME/bin\n" | tee -a /etc/profile
+
+### Install Vue ###
+echo "### Installing Vue.js ###"
+sudo npm install -g @vue/cli
 
 # TODO ### Setup VS Code ###
 
