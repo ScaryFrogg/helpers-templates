@@ -14,7 +14,7 @@ sudo echo "Super User granted"
 sudo apt update
 sudo apt upgrade -y
 #install apt packages
-sudo apt install -y openjdk-11-jdk htop node
+sudo apt install -y default-jdk build-essential htop node wget alacritty
 
 ### move scripts to bin ###
 echo "Moving scripts to /usr/local/bin"
@@ -27,10 +27,13 @@ git config --global user.email $GIT_USER_EMAIL
 git config --list --global
 
 ### Setup JDK ###
-echo "### Setting up JDK ###"
+echo "### Setting up JDK and java ENVs ###"
 JAVA_HOME_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
 sudo printf "\nexport JAVA_HOME=\"%s\"\n" $JAVA_HOME_PATH | tee -a /etc/profile
 sudo printf "export PATH=\$JAVA_HOME/bin:\$PATH\n" | tee -a /etc/profile
+
+### Setup PATH ###
+sudo printf "export PATH=\$PATH:/usr/sbin\n" | tee -a /etc/profile
 
 # TODO ### Setup fish ###
 
@@ -63,16 +66,16 @@ then
 fi
 
 ### Configure Kotlin ###
-echo "### Configuring Kotlin ###"
+#echo "### Configuring Kotlin ###"
 
-sudo printf "\nexport KOTLIN_HOME=\"/home/vojin/idea-IU-221.5787.30/plugins/Kotlin\"\n" | tee -a /etc/profile
-sudo printf "export PATH=\$PATH:\$KOTLIN_HOME/bin\n" | tee -a /etc/profile
+#sudo printf "\nexport KOTLIN_HOME=\"/home/vojin/idea-IU-221.5787.30/plugins/Kotlin\"\n" | tee -a /etc/profile
+#sudo printf "export PATH=\$PATH:\$KOTLIN_HOME/bin\n" | tee -a /etc/profile
 
 ### Install Vue ###
 echo "### Installing Vue.js ###"
 sudo npm install -g @vue/cli
 
-# TODO ### Setup VS Code ###
+# TODO ### Setup nvim ###
 
 ### Terminal color-schemes ###
 echo "### Setting up Terminal color-schemes ###"
