@@ -1,0 +1,12 @@
+#!/bin/bash
+GIT_USER_NAME="Vojin Puric"
+GIT_USER_EMAIL="puricvojin@gmail.com"
+
+install_jdk=false
+install_node=false
+install_utility_apts=false
+install_nvim=false
+
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color

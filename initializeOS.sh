@@ -17,13 +17,13 @@ sudo echo "Super User granted"
 sudo apt update
 sudo apt upgrade -y
 #install apt packages
-sudo apt install -y build-essential
 sudo apt install -y default-jdk
-sudo apt install -y htop
+sudo apt install -y build-essential
+sudo apt install -y curl
 sudo apt install -y wget
+sudo apt install -y htop
 sudo apt install -y alacritty
 sudo apt install -y ktorrent
-sudo apt install -y neovim
 
 ### move scripts to bin ###
 echo -e "${CYAN}Moving scripts to /usr/local/bin"
