@@ -3,8 +3,11 @@
 #Put all .deb installers inisde ./installers folder 
 # and all zipped(.tar and .tar.gz) portable software inside ./portable folder
 #Update Variables if needed
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
 
-### Variables ###
+echo -e "I ${RED}love${NC} Stack Overflow"iables ###
 GIT_USER_NAME="Vojin Puric"
 GIT_USER_EMAIL="puricvojin@gmail.com"
 
@@ -14,20 +17,26 @@ sudo echo "Super User granted"
 sudo apt update
 sudo apt upgrade -y
 #install apt packages
-sudo apt install -y default-jdk build-essential htop node wget alacritty
+sudo apt install -y build-essential
+sudo apt install -y default-jdk
+sudo apt install -y htop
+sudo apt install -y wget
+sudo apt install -y alacritty
+sudo apt install -y ktorrent
+sudo apt install -y neovim
 
 ### move scripts to bin ###
-echo "Moving scripts to /usr/local/bin"
+echo -e "${CYAN}Moving scripts to /usr/local/bin"
 sudo cp -a ./bin/. /usr/local/bin/
 
 ### Setup Git ###
-echo "### Setting up git ###"
+echo -e "${CYAN}### Setting up git ###"
 git config --global user.name $GIT_USER_NAME
 git config --global user.email $GIT_USER_EMAIL
 git config --list --global
 
 ### Setup JDK ###
-echo "### Setting up JDK and java ENVs ###"
+echo -e "${CYAN}### Setting up JDK and java ENVs ###"
 JAVA_HOME_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
 sudo printf "\nexport JAVA_HOME=\"%s\"\n" $JAVA_HOME_PATH | tee -a /etc/profile
 sudo printf "export PATH=\$JAVA_HOME/bin:\$PATH\n" | tee -a /etc/profile
@@ -35,10 +44,16 @@ sudo printf "export PATH=\$JAVA_HOME/bin:\$PATH\n" | tee -a /etc/profile
 ### Setup PATH ###
 sudo printf "export PATH=\$PATH:/usr/sbin\n" | tee -a /etc/profile
 
-# TODO ### Setup fish ###
+### Setup Node ###
+echo -e "${CYAN}### Setting up Node.js and npm ###"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+# download and install Node.js
+nvm install 20
+echo -e "${CYAN} Node version $(node -v)"
+echo -e "${CYAN} npm version $(npm -v)"
 
 ### Run offline installers ###
-echo "### Running Offline Installers ###"
+echo -e "${CYAN}### Running Offline Installers ###"
 if [ -d "./installers" ]; 
 then
     for file in ./installers/*
@@ -49,7 +64,7 @@ then
 fi
 
 ### Extracting portable software ###
-echo "### Extracting Portable Software to HOME ###"
+echo -e "${CYAN}### Extracting Portable Software to HOME ###"
 if [ -d "./portable" ]; 
 then
     for file in ./portable/*.tar
@@ -72,13 +87,15 @@ fi
 #sudo printf "export PATH=\$PATH:\$KOTLIN_HOME/bin\n" | tee -a /etc/profile
 
 ### Install Vue ###
-echo "### Installing Vue.js ###"
+echo -e "${CYAN}### Installing Vue.js ###"
 sudo npm install -g @vue/cli
 
 # TODO ### Setup nvim ###
+echo -e "${CYAN}### Installing NeoVim ###"
+###sudo apt install neovim ###
 
 ### Terminal color-schemes ###
-echo "### Setting up Terminal color-schemes ###"
+echo -e "${CYAN}### Setting up Terminal color-schemes ###"
 cd ~
 git clone https://gitlab.com/dwt1/shell-color-scripts.git
 sudo cp ./shell-color-scripts/colorscript.sh /usr/bin/colorscript
