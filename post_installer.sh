@@ -10,17 +10,58 @@ main() {
     sudo apt install -y curl
     sudo apt install -y wget
 
-    sudo apt install -y htop
-    sudo apt install -y alacritty
-    sudo apt install -y ktorrent
+    ### Setup Git ###
+    echo -e "${CYAN}### Setting up git ###"
+    git config --global user.name $GIT_USER_NAME
+    git config --global user.email $GIT_USER_EMAIL
+    git config --list --global
 
+    script_install "generate_ssh"
     script_install "install_jdk"
     script_install "install_node"
     script_install "install_utility_apts"
     script_install "install_nvim"
+    script_install "set_shell_color_scripts"
+
+    ### move scripts to bin ###
+    echo -e "${CYAN}Moving scripts to /usr/local/bin"
+    sudo cp -a ./bin/. /usr/local/bin/
+
 
     ### Setup PATH ###
     sudo printf "export PATH=\$PATH:/usr/sbin\n" | tee -a /etc/profile
+
+    ### Run offline installers ###
+    echo -e "${CYAN}### Running Offline Installers ###"
+    if [ -d "./installers" ]; 
+    then
+        for file in ./installers/*
+        do
+            echo "### Installing $file"
+            sudo dpkg -i "$file"
+        done
+    fi
+
+    ### Extracting portable software ###
+    echo -e "${CYAN}### Extracting Portable Software to HOME ###"
+    if [ -d "./portable" ]; 
+    then
+        for file in ./portable/*.tar
+        do
+            echo "### Extracting $file to HOME"
+            tar xvf $file -C ~ || echo "extracting $file failed" > /dev/stderr
+        done
+        for file in ./portable/*.tar.gz
+        do
+            echo "### Extracting $file to HOME"
+            tar xvzf $file -C ~ || echo "extracting $file failed" > /dev/stderr
+        done
+    fi
+
+
+    ### Fix if some installs were broken ###
+    sudo apt --fix-broken install -y
+    sudo apt autoremove -y
 }
 
 function script_install() {

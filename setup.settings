@@ -1,12 +1,16 @@
 #!/bin/bash
 GIT_USER_NAME="Vojin Puric"
 GIT_USER_EMAIL="puricvojin@gmail.com"
+SSH_PASSPHRASE=""
 
-install_jdk=false
-install_node=false
-install_utility_apts=false
-install_nvim=false
+generate_ssh=true
+install_jdk=true
+install_node=true
+install_utility_apts=true
+install_nvim=true
+set_shell_color_scripts=true
 
+#console log output colors (not importaint)
 RED='\033[0;31m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
