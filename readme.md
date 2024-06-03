@@ -1,8 +1,9 @@
 #How to Use
-Update Variables if needed
-Put all .deb installers inisde ./installers folder and all zipped(.tar and .tar.gz) portable software inside ./portable folder
+-Update Variables if needed in setup.settings file
+-Put all .deb installers inisde ./installers folder 
+-Put all zipped(.tar and .tar.gz) portable software inside ./portable folder
+-All scripts/custom commands in scripts folder will be copied to local bin for the user
+-Run postinstaller
 
-##TODO
-[]copy configuration for vscode
-[]remove installations after they are isntalled
-[]config for fish
+###TODO
+[]add nvim configuration fork when done configuring
