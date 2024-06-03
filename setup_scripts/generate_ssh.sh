@@ -10,3 +10,6 @@ else
   ssh-keygen -t ed25519 -q -N "$SSH_PASSPHRASE" -f ~/.ssh/id_ed25519
 fi
 ssh-add ~/.ssh/id_ed25519
+
+echo -e "${CYAN}Public SSH key\n"
+echo -e "${GREEN}$(cat ~/.ssh/id_ed25519.pub)${NC}\n"
