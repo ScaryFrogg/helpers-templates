@@ -9,6 +9,7 @@ main() {
     sudo apt install -y build-essential
     sudo apt install -y curl
     sudo apt install -y wget
+    sudo apt install -y xclip
 
     ### Setup Git ###
     echo -e "${CYAN}### Setting up git ###"

@@ -2,6 +2,7 @@
 GIT_USER_NAME="Vojin Puric"
 GIT_USER_EMAIL="puricvojin@gmail.com"
 SSH_PASSPHRASE=""
+SHELL_CONFIG_FILE="$HOME/.bash_profile"
 
 generate_ssh=true
 install_jdk=true

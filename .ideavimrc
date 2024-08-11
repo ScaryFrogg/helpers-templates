@@ -3,7 +3,6 @@
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
 let mapleader=" "
-
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
@@ -18,7 +17,7 @@ map Q gq
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
 " Highlight copied text
-Plug 'machakann/vim-highlightedyank'
+" Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
 
@@ -37,10 +36,15 @@ nmap gf <Action>(Forward)
 nmap gl <Action>(QuickJavaDoc)
 nmap gL <Action>(QuickImplementations)
 nmap gy <Action>(ShowErrorDescription)
+nmap gi <Action>(GotoImplementation)
+nmap <leader>z <Action>(ToggleZenMode)
+
 nmap <leader>w [w
 nmap <leader>b [b
 nmap <leader>e ]w
 nmap <leader>ge ]b
+nnoremap <leader>s viwc""<Esc>hp
+nmap <leader>rr <Action>(Run)
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
 "map \r <Action>(ReformatCode)

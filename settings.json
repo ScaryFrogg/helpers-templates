@@ -1,0 +1,40 @@
+{
+  "workbench.colorTheme": "Default Light+",
+  "workbench.activityBar.location": "hidden",
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "s", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<leader>", "z"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "after": ["v", "i", "w", "c", "\"", "\"", "<Esc>", "h", "p"]
+    },
+    {
+      "before": ["<C-w>", "v"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+  ],
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.startupEditor": "none",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.autoSave": "afterDelay",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.minimap.enabled": false
+}
