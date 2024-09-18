@@ -19,6 +19,7 @@ main() {
 
     script_install "generate_ssh"
     script_install "install_jdk"
+    script_install "install_go"
     script_install "install_node"
     script_install "install_utility_apts"
     script_install "install_nvim"
