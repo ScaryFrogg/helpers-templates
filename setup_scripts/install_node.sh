@@ -17,3 +17,6 @@ echo "Adding nvm initialization to $SHELL_CONFIG_FILE..."
 nvm install 20
 echo -e "${CYAN} Node version $(node -v)"
 echo -e "${CYAN} npm version $(npm -v)"
+
+# Install typescript
+sudo npm install -g typescript
