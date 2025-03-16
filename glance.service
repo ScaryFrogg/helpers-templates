@@ -1,0 +1,11 @@
+[Unit]
+Description=Glance
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/vjn/opt/
+ExecStart=/bin/bash ./startGlance
+
+[Install]
+WantedBy=default.target

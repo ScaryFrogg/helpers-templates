@@ -23,6 +23,7 @@ main() {
     script_install "install_node"
     script_install "install_utility_apts"
     script_install "install_nvim"
+    script_install "install_glance"
     script_install "set_shell_color_scripts"
 
     ### move scripts to bin ###

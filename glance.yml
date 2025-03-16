@@ -1,0 +1,84 @@
+theme:
+  background-color: 50 1 6
+  primary-color: 24 97 58
+  negative-color: 209 88 54
+pages:
+  - name: Home
+    # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
+    # hide-desktop-navigation: true
+    columns:
+      - size: small
+        widgets:
+          - type: calendar
+            first-day-of-week: monday
+
+          - type: twitch-channels
+            channels:
+              - theprimeagen
+              - j_blow
+              - teej_dv
+
+      - size: full
+        widgets:
+
+          - type: videos
+            channels:
+              #              - UCUyeluBRhGPCW4rPe_UvBZQ # Prime
+              - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+              - UCd3dNckv1Za2coSaHGHl5aA # Teej
+              - UCkbwOi_U5CBkevtlVhuzWnA # Backend Banter
+              - CWQaM7SpSECp9FELz-cHzuQ  # Dreems of code
+
+          - type: group
+            widgets:
+              - type: reddit
+                subreddit: finansije
+                show-thumbnails: true
+              - type: reddit
+                subreddit: srbija
+                show-thumbnails: true
+              - type: reddit
+                subreddit: unixporn
+                show-thumbnails: true
+
+      - size: small
+        widgets:
+          - type: weather
+            location: Belgrade, Serbia
+            units: metric # alternatively "imperial"
+            hour-format: 24h # alternatively "24h"
+            # Optionally hide the location from being displayed in the widget
+            # hide-location: true
+
+          - type: markets
+            markets:
+              - symbol: SPYL.AS
+                name: S&P 500
+              - symbol: BTC-USD
+                name: Bitcoin
+
+          - type: releases
+            cache: 1d
+            # Without authentication the Github API allows for up to 60 requests per hour. You can create a
+            # read-only token from your Github account settings and use it here to increase the limit.
+            # token: ...
+            repositories:
+              - glanceapp/glance
+              - go-gitea/gitea
+              - immich-app/immich
+              - syncthing/syncthing
+
+  # Add more pages here:
+  # - name: Your page name
+  #   columns:
+  #     - size: small
+  #       widgets:
+  #         # Add widgets here
+
+  #     - size: full
+  #       widgets:
+  #         # Add widgets here
+
+  #     - size: small
+  #       widgets:
+  #         # Add widgets here
