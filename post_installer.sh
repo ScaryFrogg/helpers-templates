@@ -65,6 +65,9 @@ main() {
     ### Fix if some installs were broken ###
     sudo apt --fix-broken install -y
     sudo apt autoremove -y
+
+    ### TODO check what you want for terminal for now just coppy alacritty conf
+    mkdir -p $HOME/.config/alacritty/ && cp ./alacritty/* $_
 }
 
 function script_install() {
